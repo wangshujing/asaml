@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.saml.inter.TypeRuleMapper" >
+  <resultMap id="BaseResultMap" type="com.saml.model.TypeRule" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="projectId" property="projectId" jdbcType="INTEGER" />
+    <result column="contentId" property="contentId" jdbcType="INTEGER" />
+    <result column="ruleName" property="ruleName" jdbcType="VARCHAR" />
+    <result column="ruleCondition" property="ruleCondition" jdbcType="VARCHAR" />
+    <result column="ruleConclusion" property="ruleConclusion" jdbcType="VARCHAR" />
+    <result column="ruleType" property="ruleType" jdbcType="INTEGER" />
+    <result column="ruleEnv" property="ruleEnv" jdbcType="INTEGER" />
+    <result column="addTime" property="addTime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, projectId, contentId, ruleName, ruleCondition, ruleConclusion, ruleType, ruleEnv, 
+    addTime, remark, state
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from typerule
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from typerule
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.saml.model.TypeRule" useGeneratedKeys="true" keyProperty="id">
+    insert into typerule (id, projectId, contentId, 
+      ruleName, ruleCondition, ruleConclusion, 
+      ruleType, ruleEnv, addTime, 
+      remark, state)
+    values (#{id,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, #{contentId,jdbcType=INTEGER}, 
+      #{ruleName,jdbcType=VARCHAR}, #{ruleCondition,jdbcType=VARCHAR}, #{ruleConclusion,jdbcType=VARCHAR}, 
+      #{ruleType,jdbcType=INTEGER}, #{ruleEnv,jdbcType=INTEGER}, #{addTime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.saml.model.TypeRule" useGeneratedKeys="true" keyProperty="id">
+    insert into typerule
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="projectId != null" >
+        projectId,
+      </if>
+      <if test="contentId != null" >
+        contentId,
+      </if>
+      <if test="ruleName != null" >
+        ruleName,
+      </if>
+      <if test="ruleCondition != null" >
+        ruleCondition,
+      </if>
+      <if test="ruleConclusion != null" >
+        ruleConclusion,
+      </if>
+      <if test="ruleType != null" >
+        ruleType,
+      </if>
+      <if test="ruleEnv != null" >
+        ruleEnv,
+      </if>
+      <if test="addTime != null" >
+        addTime,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="contentId != null" >
+        #{contentId,jdbcType=INTEGER},
+      </if>
+      <if test="ruleName != null" >
+        #{ruleName,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleCondition != null" >
+        #{ruleCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleConclusion != null" >
+        #{ruleConclusion,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleType != null" >
+        #{ruleType,jdbcType=INTEGER},
+      </if>
+      <if test="ruleEnv != null" >
+        #{ruleEnv,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.saml.model.TypeRule" >
+    update typerule
+    <set >
+      <if test="projectId != null" >
+        projectId = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="contentId != null" >
+        contentId = #{contentId,jdbcType=INTEGER},
+      </if>
+      <if test="ruleName != null" >
+        ruleName = #{ruleName,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleCondition != null" >
+        ruleCondition = #{ruleCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleConclusion != null" >
+        ruleConclusion = #{ruleConclusion,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleType != null" >
+        ruleType = #{ruleType,jdbcType=INTEGER},
+      </if>
+      <if test="ruleEnv != null" >
+        ruleEnv = #{ruleEnv,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        addTime = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.saml.model.TypeRule" >
+    update typerule
+    set projectId = #{projectId,jdbcType=INTEGER},
+      contentId = #{contentId,jdbcType=INTEGER},
+      ruleName = #{ruleName,jdbcType=VARCHAR},
+      ruleCondition = #{ruleCondition,jdbcType=VARCHAR},
+      ruleConclusion = #{ruleConclusion,jdbcType=VARCHAR},
+      ruleType = #{ruleType,jdbcType=INTEGER},
+      ruleEnv = #{ruleEnv,jdbcType=INTEGER},
+      addTime = #{addTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="logicalDeleteByPrimaryKey" parameterType="java.lang.Integer" >
+   update typerule
+    set state = 2
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="logicalDeleteTypeRuleListByProjectId" parameterType="java.lang.Integer" >
+   update typerule
+    set state = 2
+    where projectId = #{projectId,jdbcType=INTEGER}
+  </update>
+  <update id="logicalDeleteTypeRuleListByContentId" parameterType="java.lang.Integer" >
+   update typerule
+    set state = 2
+    where contentId = #{contentId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByContentIdAndRuleType" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from typerule
+    where contentId = #{contentId,jdbcType=INTEGER}
+    and ruleType = #{ruleType,jdbcType=INTEGER}
+    and state=1
+  </select>
+  <select id="selectRuleCountByContentId" resultType="java.lang.Integer" parameterType="java.lang.Integer" >
+    select count(*)
+	from typerule
+	where contentId= #{contentId,jdbcType=INTEGER}
+	and state=1
+  </select>
+  <update id="logicalDeleteByContentIdAndRuleTypeAndKeyId"  >
+   update typerule
+    set state = 2
+    where contentId = #{contentId,jdbcType=INTEGER}
+    and ruleType = #{ruleType,jdbcType=INTEGER}
+    and ruleConclusion like #{keyId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectTypeRuleCountByRuleType" resultType="java.lang.Integer" parameterType="java.lang.Integer" >
+    select count(*)
+    from typerule
+    where 
+    state=1 and projectId = #{projectId,jdbcType=INTEGER} and ruleType = #{type,jdbcType=INTEGER}
+  </select>
+  <select id="selectByConclusion" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from typerule
+    where ruleConclusion like #{conclusion,jdbcType=VARCHAR}
+    and state=1
+  </select>
+</mapper>

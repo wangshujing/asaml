@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.saml.inter.VerifyResultMapper" >
+  <resultMap id="BaseResultMap" type="com.saml.model.VerifyResult" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="projectId" property="projectId" jdbcType="INTEGER" />
+    <result column="structureResult" property="structureResult" jdbcType="INTEGER" />
+    <result column="structureInfo" property="structureInfo" jdbcType="VARCHAR" />
+    <result column="processResult" property="processResult" jdbcType="INTEGER" />
+    <result column="processInfo" property="processInfo" jdbcType="VARCHAR" />
+    <result column="xmlPath" property="xmlPath" jdbcType="VARCHAR" />
+    <result column="excelPath" property="excelPath" jdbcType="VARCHAR" />
+    <result column="evaluationExcel" property="evaluationExcel" jdbcType="VARCHAR" />
+    <result column="addTime" property="addTime" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, projectId, structureResult, structureInfo, processResult, processInfo, xmlPath, 
+    excelPath, evaluationExcel, addTime, state
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from verifyresult
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from verifyresult
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.saml.model.VerifyResult" useGeneratedKeys="true" keyProperty="id">
+    insert into verifyresult (id, projectId, structureResult, 
+      structureInfo, processResult, processInfo, 
+      xmlPath, excelPath, evaluationExcel, 
+      addTime, state)
+    values (#{id,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, #{structureResult,jdbcType=INTEGER}, 
+      #{structureInfo,jdbcType=VARCHAR}, #{processResult,jdbcType=INTEGER}, #{processInfo,jdbcType=VARCHAR}, 
+      #{xmlPath,jdbcType=VARCHAR}, #{excelPath,jdbcType=VARCHAR}, #{evaluationExcel,jdbcType=VARCHAR}, 
+      #{addTime,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.saml.model.VerifyResult" useGeneratedKeys="true" keyProperty="id">
+    insert into verifyresult
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="projectId != null" >
+        projectId,
+      </if>
+      <if test="structureResult != null" >
+        structureResult,
+      </if>
+      <if test="structureInfo != null" >
+        structureInfo,
+      </if>
+      <if test="processResult != null" >
+        processResult,
+      </if>
+      <if test="processInfo != null" >
+        processInfo,
+      </if>
+      <if test="xmlPath != null" >
+        xmlPath,
+      </if>
+      <if test="excelPath != null" >
+        excelPath,
+      </if>
+      <if test="evaluationExcel != null" >
+        evaluationExcel,
+      </if>
+      <if test="addTime != null" >
+        addTime,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="structureResult != null" >
+        #{structureResult,jdbcType=INTEGER},
+      </if>
+      <if test="structureInfo != null" >
+        #{structureInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="processResult != null" >
+        #{processResult,jdbcType=INTEGER},
+      </if>
+      <if test="processInfo != null" >
+        #{processInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="xmlPath != null" >
+        #{xmlPath,jdbcType=VARCHAR},
+      </if>
+      <if test="excelPath != null" >
+        #{excelPath,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluationExcel != null" >
+        #{evaluationExcel,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.saml.model.VerifyResult" >
+    update verifyresult
+    <set >
+      <if test="projectId != null" >
+        projectId = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="structureResult != null" >
+        structureResult = #{structureResult,jdbcType=INTEGER},
+      </if>
+      <if test="structureInfo != null" >
+        structureInfo = #{structureInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="processResult != null" >
+        processResult = #{processResult,jdbcType=INTEGER},
+      </if>
+      <if test="processInfo != null" >
+        processInfo = #{processInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="xmlPath != null" >
+        xmlPath = #{xmlPath,jdbcType=VARCHAR},
+      </if>
+      <if test="excelPath != null" >
+        excelPath = #{excelPath,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluationExcel != null" >
+        evaluationExcel = #{evaluationExcel,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+        addTime = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.saml.model.VerifyResult" >
+    update verifyresult
+    set projectId = #{projectId,jdbcType=INTEGER},
+      structureResult = #{structureResult,jdbcType=INTEGER},
+      structureInfo = #{structureInfo,jdbcType=VARCHAR},
+      processResult = #{processResult,jdbcType=INTEGER},
+      processInfo = #{processInfo,jdbcType=VARCHAR},
+      xmlPath = #{xmlPath,jdbcType=VARCHAR},
+      excelPath = #{excelPath,jdbcType=VARCHAR},
+      evaluationExcel = #{evaluationExcel,jdbcType=VARCHAR},
+      addTime = #{addTime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByProjectId" resultMap="BaseResultMap">
+    select 
+	<include refid="Base_Column_List" />
+    from verifyresult
+    where 
+    state=1 and projectId = #{projectId,jdbcType=INTEGER} 
+  </select>
+  <update id="logicalDeleteByProjectId" parameterType="java.lang.Integer" >
+   update verifyresult
+    set state = 2
+    where projectId = #{projectId,jdbcType=INTEGER}
+  </update>
+  
+</mapper>

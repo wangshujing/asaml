@@ -1,0 +1,126 @@
+body {
+  font-family: '微软雅黑', sans-serif; 
+  color: black;
+  font-size: 13px;
+ /*  background-color: #f2f2f2;  */
+}
+.navbar{
+	background-color: #5f8f53;
+	border:0;
+	border-radius:0;
+	margin-bottom: 0;
+}
+.navbar > .navbar-header > .navbar-brand{
+	color: white;
+	font-size: 22px;
+	font-family: 微软雅黑；
+}
+.sidebar {
+   padding-top:10px;
+   padding-bottom:10px;
+   background-color: #fbfdf4;
+  
+}
+.nav-sidebar > li >a {
+	font-size:16px;
+	font-weight:bold;
+}
+.nav-sidebar > .active > a, .nav-sidebar > .active > a:hover, .nav-sidebar > .active > a:focus {
+    color: #fff;
+    background-color: #f0ad4e;
+}
+.nav-sidebar .sub-list{
+	list-style:none;
+	padding: 0 0;
+}.nav-sidebar .sub-list li a{
+	font-size:14px;
+	padding: 10px 40px;
+	display: block;
+	position: relative;
+	text-decoration:none;
+	font-weight:bold;
+	
+}
+.sub-list > .active > a, .sub-list > .active > a:hover, .sub-list > .active > a:focus {
+    color: #fff;
+    background-color: #f0ad4e;
+}
+
+.sub-list > li:hover{
+    background-color: #eee;
+}
+.systemSector{
+	padding: 10px 10px;
+	text-align: center
+}
+.systemSector a{
+	width: 100%;
+	line-height: 50px;
+}
+/* Page-start */
+.page {
+	text-align:center;
+    vertical-align:middle;
+    height:40px;
+    line-height:40px;
+    } /* For SelectPage And NewTask ect. (Float Left And Right) */
+.table_setpage {
+	display:inline-block;
+	vertical-align:middle;
+	} 
+.table_setpage{color:#AAAAAA;}
+.table_setpage a:link,.table_setpage a:visited,.table_setpage a:hover,.table_setpage .current{
+	border:1px solid #D9D9D9; 
+	background:#fff; 
+	display:inline-block; 
+	margin:0 2px; 
+	text-decoration:none; 
+	font-size:12px;
+	height:25px; 
+	text-align:center; 
+	line-height:25px;
+	color:#AAA; 
+	padding:0 10px; 
+	font-family:Arial, Helvetica, sans-serif;
+	} 
+.table_setpage a:hover{ border:1px solid #69A4EB ;} 
+.table_setpage .current{ 
+	border:1px solid #69A4EB ;
+	background:#fff;  
+	margin:1px;color:#69A4EB ;
+	} 
+.table_setpage span{ color:#aaa;}
+.table_setpage .info{ 
+	color:#9C9C9C; 
+	padding-right:4px;
+	} 
+/* Page-end */
+.table tbody tr td{
+	vertical-align: middle;
+}
+#addPara{
+    position: relative;
+       top: -50px;
+    left: 450px;
+}
+#addDemand{
+    position: relative;
+       top: -50px;
+    left: 450px;
+}
+#addEle{
+    position: relative;
+       top: -50px;
+    left: 450px;
+}
+.demandInfo{min-height: 100px;
+    /* border: 1px solid gray; */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.demandInfo p{
+	font-size: 18px;
+    text-indent: 2em;
+    margin: 15px;
+}

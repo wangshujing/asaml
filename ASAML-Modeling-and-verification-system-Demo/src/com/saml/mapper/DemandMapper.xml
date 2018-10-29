@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.saml.inter.DemandMapper" >
+  <resultMap id="BaseResultMap" type="com.saml.model.Demand" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="projectId" property="projectId" jdbcType="INTEGER" />
+    <result column="demandName" property="demandName" jdbcType="VARCHAR" />
+    <result column="demandLevel" property="demandLevel" jdbcType="INTEGER" />
+    <result column="demandInfo" property="demandInfo" jdbcType="VARCHAR" />
+    <result column="parentId" property="parentId" jdbcType="INTEGER" />
+    <result column="addTime" property="addTime" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    id, projectId, demandName, demandLevel, demandInfo, parentId, addTime, state
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from demand
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from demand
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.saml.model.Demand" useGeneratedKeys="true" keyProperty="id">
+    insert into demand (id, projectId, demandName, 
+      demandLevel, demandInfo, parentId, 
+      addTime, state)
+    values (#{id,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, #{demandName,jdbcType=VARCHAR}, 
+      #{demandLevel,jdbcType=INTEGER}, #{demandInfo,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER}, 
+      #{addTime,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.saml.model.Demand" useGeneratedKeys="true" keyProperty="id">
+    insert into demand
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="projectId != null" >
+        projectId,
+      </if>
+      <if test="demandName != null" >
+        demandName,
+      </if>
+      <if test="demandLevel != null" >
+        demandLevel,
+      </if>
+      <if test="demandInfo != null" >
+        demandInfo,
+      </if>
+      <if test="parentId != null" >
+        parentId,
+      </if>
+      <if test="addTime != null" >
+        addTime,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="demandName != null" >
+        #{demandName,jdbcType=VARCHAR},
+      </if>
+      <if test="demandLevel != null" >
+        #{demandLevel,jdbcType=INTEGER},
+      </if>
+      <if test="demandInfo != null" >
+        #{demandInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.saml.model.Demand" >
+    update demand
+    <set >
+      <if test="projectId != null" >
+        projectId = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="demandName != null" >
+        demandName = #{demandName,jdbcType=VARCHAR},
+      </if>
+      <if test="demandLevel != null" >
+        demandLevel = #{demandLevel,jdbcType=INTEGER},
+      </if>
+      <if test="demandInfo != null" >
+        demandInfo = #{demandInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        parentId = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        addTime = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.saml.model.Demand" >
+    update demand
+    set projectId = #{projectId,jdbcType=INTEGER},
+      demandName = #{demandName,jdbcType=VARCHAR},
+      demandLevel = #{demandLevel,jdbcType=INTEGER},
+      demandInfo = #{demandInfo,jdbcType=VARCHAR},
+      parentId = #{parentId,jdbcType=INTEGER},
+      addTime = #{addTime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectDemandListByLevel" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from demand
+    where demandLevel = #{level,jdbcType=INTEGER}
+    and state=1 and projectId = #{projectId,jdbcType=INTEGER}
+  </select>
+  <select id="selectDemandListByParentId" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from demand
+    where  parentId = #{parentId,jdbcType=INTEGER}
+    and state=1
+  </select>
+  <select id="selectDemandListPageByParentId" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from demand
+    where  parentId = #{parentId,jdbcType=INTEGER}
+    and state=1 and
+    demandName like #{keyword}
+     order by id  
+  </select>
+   <update id="logicalDeleteByPrimaryKey" parameterType="java.lang.Integer" >
+   update demand
+    set state = 2
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="logicalDeleteListByProjectId" parameterType="java.lang.Integer" >
+   update demand
+    set state = 2
+    where projectId = #{projectId,jdbcType=INTEGER}
+  </update>
+  <select id="selectDemandCountByLevel" resultType="java.lang.Integer" parameterType="java.lang.Integer" >
+    select count(*)
+    from demand
+    where 
+    state=1 and projectId = #{projectId,jdbcType=INTEGER} and demandLevel = #{level,jdbcType=INTEGER}
+  </select>
+  <select id="selectDemandListPage" resultMap="BaseResultMap" >
+    select  
+    <include refid="Base_Column_List" />
+    from demand 
+    where  state=1 and
+    demandName like #{keyword}
+    and projectId = #{projectId,jdbcType=INTEGER}
+    and demandLevel &lt;=4
+    order by id  
+  </select>
+   <select id="selectDemandList" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from demand
+    where  state=1 and
+   	projectId = #{projectId,jdbcType=INTEGER}
+     order by id  
+  </select>
+   <update id="logicalDeleteListByProjectIdAndLevel" parameterType="java.lang.Integer" >
+   update demand
+    set state = 2
+    where projectId = #{projectId,jdbcType=INTEGER}
+    and demandLevel = #{level,jdbcType=INTEGER}
+  </update>
+</mapper>

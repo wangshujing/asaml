@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.saml.inter.SamlTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.saml.model.SamlType" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="projectId" property="projectId" jdbcType="INTEGER" />
+    <result column="typeName" property="typeName" jdbcType="VARCHAR" />
+    <result column="typeExpression" property="typeExpression" jdbcType="VARCHAR" />
+    <result column="typeRules" property="typeRules" jdbcType="INTEGER" />
+    <result column="typeClassification" property="typeClassification" jdbcType="INTEGER" />
+    <result column="typelevel" property="typelevel" jdbcType="INTEGER" />
+    <result column="addTime" property="addTime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="BaseResultMap2" type="com.saml.model.SamlType" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="projectId" property="projectId" jdbcType="INTEGER" />
+    <result column="projectName" property="projectName" jdbcType="VARCHAR" />
+    <result column="typeName" property="typeName" jdbcType="VARCHAR" />
+    <result column="typeExpression" property="typeExpression" jdbcType="VARCHAR" />
+    <result column="typeRules" property="typeRules" jdbcType="INTEGER" />
+    <result column="typeClassification" property="typeClassification" jdbcType="INTEGER" />
+    <result column="typelevel" property="typelevel" jdbcType="INTEGER" />
+    <result column="addTime" property="addTime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="BaseResultMap3" type="com.saml.model.SamlType" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="projectId" property="projectId" jdbcType="INTEGER" />
+    <result column="demandId" property="demandId" jdbcType="INTEGER" />
+    <result column="typeName" property="typeName" jdbcType="VARCHAR" />
+    <result column="typeExpression" property="typeExpression" jdbcType="VARCHAR" />
+    <result column="typeRules" property="typeRules" jdbcType="INTEGER" />
+    <result column="typeClassification" property="typeClassification" jdbcType="INTEGER" />
+    <result column="typelevel" property="typelevel" jdbcType="INTEGER" />
+    <result column="addTime" property="addTime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, projectId, typeName, typeExpression, typeRules, typeClassification, typelevel, 
+    addTime, remark, state
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from samltype
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from samltype
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.saml.model.SamlType" useGeneratedKeys="true" keyProperty="id">
+    insert into samltype (id, projectId, typeName, 
+      typeExpression, typeRules, typeClassification, 
+      typelevel, addTime, remark, 
+      state)
+    values (#{id,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, #{typeName,jdbcType=VARCHAR}, 
+      #{typeExpression,jdbcType=VARCHAR}, #{typeRules,jdbcType=INTEGER}, #{typeClassification,jdbcType=INTEGER}, 
+      #{typelevel,jdbcType=INTEGER}, #{addTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, 
+      #{state,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.saml.model.SamlType" useGeneratedKeys="true" keyProperty="id">
+    insert into samltype
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="projectId != null" >
+        projectId,
+      </if>
+      <if test="typeName != null" >
+        typeName,
+      </if>
+      <if test="typeExpression != null" >
+        typeExpression,
+      </if>
+      <if test="typeRules != null" >
+        typeRules,
+      </if>
+      <if test="typeClassification != null" >
+        typeClassification,
+      </if>
+      <if test="typelevel != null" >
+        typelevel,
+      </if>
+      <if test="addTime != null" >
+        addTime,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="typeName != null" >
+        #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="typeExpression != null" >
+        #{typeExpression,jdbcType=VARCHAR},
+      </if>
+      <if test="typeRules != null" >
+        #{typeRules,jdbcType=INTEGER},
+      </if>
+      <if test="typeClassification != null" >
+        #{typeClassification,jdbcType=INTEGER},
+      </if>
+      <if test="typelevel != null" >
+        #{typelevel,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.saml.model.SamlType" >
+    update samltype
+    <set >
+      <if test="projectId != null" >
+        projectId = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="typeName != null" >
+        typeName = #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="typeExpression != null" >
+        typeExpression = #{typeExpression,jdbcType=VARCHAR},
+      </if>
+      <if test="typeRules != null" >
+        typeRules = #{typeRules,jdbcType=INTEGER},
+      </if>
+      <if test="typeClassification != null" >
+        typeClassification = #{typeClassification,jdbcType=INTEGER},
+      </if>
+      <if test="typelevel != null" >
+        typelevel = #{typelevel,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        addTime = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.saml.model.SamlType" >
+    update samltype
+    set projectId = #{projectId,jdbcType=INTEGER},
+      typeName = #{typeName,jdbcType=VARCHAR},
+      typeExpression = #{typeExpression,jdbcType=VARCHAR},
+      typeRules = #{typeRules,jdbcType=INTEGER},
+      typeClassification = #{typeClassification,jdbcType=INTEGER},
+      typelevel = #{typelevel,jdbcType=INTEGER},
+      addTime = #{addTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectSamlTypeListPageByLevel" resultMap="BaseResultMap2"  >
+    select 
+    s.id, s.projectId, p.projectName, s.typeName, s.typeExpression, s.typeRules, s.typeClassification,s.typelevel, s.addTime, 
+    s.remark, s.state
+    from samltype s, project p
+    where 
+    s.state=1 and s.projectId=p.id and s.typelevel = #{level} 
+    and s.typeName like #{keyword}
+    order by s.id  
+  </select>
+  <update id="logicalDeleteByPrimaryKey" parameterType="java.lang.Integer" >
+   update samltype
+    set state = 2
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="logicalDeleteSamlTypeListByProjectId" parameterType="java.lang.Integer" >
+   update samltype
+    set state = 2
+    where projectId = #{projectId,jdbcType=INTEGER}
+  </update>
+  <select id="selectAllSamlTypeByLevel" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from samltype
+    where 
+    state=1 and projectId = #{projectId} and typelevel = #{level}
+     order by CONVERT(typeName USING gbk) ASC   
+  </select>
+  <select id="selectSamlTypeCountByLevel" resultType="java.lang.Integer" parameterType="java.lang.Integer" >
+    select count(*)
+    from samltype
+    where 
+    state=1 and projectId = #{projectId} and typelevel = #{level}
+  </select>
+ 
+</mapper>

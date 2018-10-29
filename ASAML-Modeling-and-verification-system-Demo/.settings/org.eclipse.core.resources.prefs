@@ -1,0 +1,13 @@
+eclipse.preferences.version=1
+encoding//WebContent/static/css/main.css=UTF-8
+encoding//src/com/saml/samvs/libraries/forumInfos.java=UTF-8
+encoding//src/com/saml/samvs/libraries/forumOwners.java=UTF-8
+encoding//src/com/saml/samvs/libraries/themeInfos.java=UTF-8
+encoding//src/com/saml/samvs/libraries/users.java=UTF-8
+encoding//src/com/saml/util/Printer.java=UTF-8
+encoding//src/com/saml/util/WTBiRelation.java=UTF-8
+encoding//src/com/saml/util/WTEvent.java=UTF-8
+encoding//src/com/saml/util/WTNode.java=UTF-8
+encoding//src/com/saml/util/WindowTree.java=UTF-8
+encoding//src/com/saml/util/XMLParser.java=UTF-8
+encoding/<project>=UTF-8

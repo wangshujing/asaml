@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PackageAnalysis>
+    <Package name="com.saml.config" x="169" y="163"/>
+    <Package name="com.saml.controller" x="281" y="35">
+        <DependencyLink destination="com.saml.util"/>
+        <DependencyLink destination="com.saml.model"/>
+        <DependencyLink destination="com.saml.samvs.types.EnvDefinedMappingTypes"/>
+        <DependencyLink destination="com.saml.inter"/>
+    </Package>
+    <Package name="com.saml.inter" x="307" y="131">
+        <DependencyLink destination="com.saml.util"/>
+        <DependencyLink destination="com.saml.model"/>
+    </Package>
+    <Package name="com.saml.interceptor" x="141" y="196"/>
+    <Package name="com.saml.mapper" x="161" y="130"/>
+    <Package name="com.saml.model" x="125" y="86"/>
+    <Package name="com.saml.samvs.libraries" x="454" y="35">
+        <DependencyLink destination="com.saml.samvs.types.EnvDefinedBasicTypes"/>
+    </Package>
+    <Package name="com.saml.samvs.types.EnvDefinedBasicTypes" x="401" y="214">
+        <DependencyLink destination="com.saml.samvs.libraries"/>
+    </Package>
+    <Package name="com.saml.samvs.types.EnvDefinedMappingTypes" x="280" y="87">
+        <DependencyLink destination="com.saml.util"/>
+        <DependencyLink destination="com.saml.samvs.libraries"/>
+        <DependencyLink destination="com.saml.samvs.types.EnvDefinedBasicTypes"/>
+    </Package>
+    <Package name="com.saml.test" x="183" y="227"/>
+    <Package name="com.saml.util" x="402" y="183">
+        <DependencyLink destination="com.saml.samvs.types.EnvDefinedMappingTypes"/>
+    </Package>
+</PackageAnalysis>
